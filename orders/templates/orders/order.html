@@ -1,0 +1,41 @@
+{% extends 'products/base.html' %}
+{% load static humanize cache %}
+{% block css %}
+    <link href="{% static 'vendor/css/orders.css' %}" rel="stylesheet">
+{% endblock %}
+{% block content %}
+{% cache 60 * 60 object %}
+    <section>
+    <div class="container pt-5">
+        <div class="text-center mt-5">
+            <h1>Заказ №{{ object.id }}</h1>
+            <div class="orders mt-5">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">Название</th>
+                        <th scope="col">Кол-во</th>
+                        <th scope="col">Цена</th>
+                        <th scope="col">Сумма</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for item in object.basket_history.purchased_items %}
+                        <tr>
+                        <th scope="row">
+                            {{ item.product_name }}
+                        </th>
+                        <td>{{ item.quantity }}</td>
+                        <td>{{ item.price|intcomma }} руб.</td>
+                        <td>{{ item.sum|intcomma }} руб.</td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                <p class="float-right h4 mt-3">Итого {{ object.basket_history.total_sum|intcomma }} руб.</p>
+            </div>
+        {% endcache %}
+        </div>
+    </div>
+</section>
+{% endblock %}

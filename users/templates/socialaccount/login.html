@@ -1,0 +1,25 @@
+{% extends "users/base.html" %}
+{% load i18n static socialaccount %}
+{% block main %}
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-5">
+                <div class="card shadow-lg border-0 rounded-lg mt-5">
+                    <div class="card-header"><h3 class="text-center font-weight-light my-4">{% blocktrans with provider.name as provider %}Авторизация через {{ provider }}{% endblocktrans %}</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group d-flex align-items-center justify-content-center mt-4 mb-0">
+                                <h5 class="text-center">{% blocktrans with provider.name as provider %}Вы будете перенаправлены на {{ provider }}{% endblocktrans %}</h5>
+                            </div>
+                        <form method="post">
+                            {% csrf_token %}
+                            <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
+                                <input class="btn btn-primary btn-block" type="submit" value="Авторизоваться">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
