@@ -19,62 +19,45 @@ This project is a simple online store with the following features:
 - Django 4.1
 - Celery - Asynchronous task queue  
 - Redis - Broker for Celery
-- PostgreSQL 14 - Database
+- PostgreSQL 16 - Database
 
 ## Installation
 
 To run this project on your local machine:
 
 1. Clone this repository
-git clone [https://github.com/tilekm/store.git](https://github.com/tilekm/store)
-
-Copy code
+`git clone https://github.com/tilekm/store.git`
 
 
 2. Navigate into the project directory
-cd store
-
-Copy code
+`cd store`
 
 
 3. Create a virtual environment and activate it
-python3 -m venv env
+`python3 -m venv env`
 
-source env/bin/activate
-
-Copy code
+`source env/bin/activate`
 
 
 4. Install dependencies
-pip install -r requirements.txt
-
-Copy code
+`pip install -r requirements.txt`
 
 
 5. Configure postgres database and add credentials to `settings.py` 
 
 6. Run database migrations
-python manage.py migrate
-
-Copy code
+`python manage.py migrate`
 
 
 7. Start Celery worker
-celery -A store worker -l info
-
-Copy code
-
+`celery -A store worker -l info`
 
 8. Start Redis server
-redis-server
-
-Copy code
+`redis-server`
 
 
 9. Run the development server
-python manage.py runserver
-
-Copy code
+`python manage.py runserver`
 
 
 The app should now be running at **http://localhost:8000**
