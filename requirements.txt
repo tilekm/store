@@ -1,5 +1,5 @@
 Django>=3.2.25
-Pillow==9.5.0
+Pillow==10.3.0
 
 django-allauth==0.54.0
 django-environ==0.10.0
